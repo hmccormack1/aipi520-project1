@@ -10,6 +10,7 @@ The current implementation is in **`rdu_forecast/`**.
 2. Follow the [course-style code guide](rdu_forecast/CODE_GUIDE.md).
 3. Open the [recorded results and eight plots](rdu_forecast/reference_results/artifacts/results.html).
 4. Review [Git handoff instructions](rdu_forecast/INTEGRATION.md).
+5. Share the [English methods and results report](AIPI520_Project1_Methods_and_Results_EN.pdf) or the [Chinese methods and results report](AIPI520_Project1_Methods_and_Results_ZH.pdf).
 
 ```powershell
 cd rdu_forecast
