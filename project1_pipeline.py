@@ -34,7 +34,7 @@ def load_raw_data():
             "latitude": 35.8776,
             "longitude": -78.7875,
             "start_date": "2015-01-01",
-            "end_date": "2026-09-16",
+            "end_date": "2026-09-17",
             "hourly": "temperature_2m",
             "temperature_unit": "fahrenheit",
             "timezone": "UTC",
