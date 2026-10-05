@@ -31,7 +31,8 @@ def read_json(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def computational_hash(source, translations):
+def normalized_computational_ast(source, translations):
+    """Return a same-interpreter AST representation with allowed text removed."""
     class Normalize(ast.NodeTransformer):
         def visit_Constant(self, node):
             if isinstance(node.value, str) and node.value in translations:
@@ -52,7 +53,8 @@ def computational_hash(source, translations):
         visit_ClassDef = strip_docstring
 
     tree = Normalize().visit(ast.parse(source))
-    return sha(ast.dump(tree, include_attributes=False).encode())
+    ast.fix_missing_locations(tree)
+    return ast.dump(tree, include_attributes=False)
 
 
 def run():
@@ -79,10 +81,15 @@ def run():
             check(sha(original) == record["original_sha256"] == frozen["source_hashes"][name], name)
             check(sha(delivered) == record["english_sha256"], f"Delivered source changed: {name}")
             if name.endswith(".py"):
-                expected = record["computational_ast_sha256"]
-                for version in (original, delivered):
-                    check(computational_hash(version.decode("utf-8"), ledger["message_translations"]) == expected,
-                          f"Computational AST differs: {name}")
+                # Compare both sources with this interpreter. Historical ast.dump hashes
+                # remain audit metadata because their serialization can vary by Python version.
+                original_ast = normalized_computational_ast(
+                    original.decode("utf-8"), ledger["message_translations"]
+                )
+                delivered_ast = normalized_computational_ast(
+                    delivered.decode("utf-8"), ledger["message_translations"]
+                )
+                check(original_ast == delivered_ast, f"Computational AST differs: {name}")
                 text = delivered.decode("utf-8")
                 for token in tokenize.generate_tokens(io.StringIO(text).readline):
                     if token.type == tokenize.COMMENT:
