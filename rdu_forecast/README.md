@@ -44,7 +44,7 @@ Start with [the results page](reference_results/artifacts/results.html), [frozen
 | 09 | `tools/09_verify_delivery.py` | Verify source equivalence, freeze chain and scores |
 | Tests | `tests/test_leakage.py` | Nine synthetic-data temporal isolation/access tests |
 
-Code sections carry numbered comments. Step 04 is an imported library called by 05/06, not a separate training command.
+Code sections carry numbered comments. Step 04 is an imported library called by 05/06, not a separate training command. For plain-language explanations of functions, variables and Python conventions, read [CODE_GUIDE.md](CODE_GUIDE.md).
 
 ## 3. Install
 
@@ -78,13 +78,13 @@ python tools/09_verify_delivery.py
 
 Open `reference_results/artifacts/results.html` in a browser. The verifier authenticates the original freeze-to-access chain, source translation, included artifacts, evaluation hashes and recomputed metrics.
 
-**Resume the full local folder or portable ZIP:**
+**Resume the existing local folder:**
 
 ```powershell
 .\.venv\Scripts\python.exe 00_run_pipeline.py --final-eval
 ```
 
-These deliveries contain data, fitted models and a working freeze manifest. The command verifies hashes, reuses sealed evaluation and regenerates plots. **No retraining or reselection occurs.**
+The local folder contains data, fitted models and a working freeze manifest. The command verifies hashes, reuses sealed evaluation and regenerates plots. **No retraining or reselection occurs.**
 
 **Reproduce from a fresh Git clone:** install dependencies and run the same command. Git excludes large development data and runtime caches, so it executes the predetermined pipeline and downloads public observations. It freezes predictions before fetching final labels. Network and several minutes of CPU time are needed.
 
@@ -167,12 +167,12 @@ After the original experiment, module docstrings and exactly two exception messa
 - `reference_results/artifacts/freeze_manifest.json`: original, unmodified freeze record.
 - `reference_results/audit/original_frozen_source.zip`: original-source audit evidence, read without execution. Original-language text remains only inside this archive and translation metadata.
 - `reference_results/delivery_manifest.json`: old/new hashes, normalized AST hashes and translations.
-- Local/portable `artifacts/freeze_manifest.json`: explicitly a **derived delivery manifest**, authenticating English source and the same artifacts, linked to the original freeze. It does not pretend translation occurred before evaluation.
-- Historical development files are excluded from Git; their original hashes remain recorded. The portable ZIP includes them for full offline verification.
+- Local `artifacts/freeze_manifest.json`: explicitly a **derived delivery manifest**, authenticating English source and the same artifacts, linked to the original freeze. It does not pretend translation occurred before evaluation.
+- Historical development files are excluded from Git; their original hashes remain recorded. The existing local data support full offline verification.
 
 ## 10. Merge integration
 
-Additive directory `rdu_forecast/`, branch `codex/rdu-station-forecast`, based on upstream main `034b83a8e748c836a6ab4c7c79c0534156f11899`. Root `README.md`, `project1_pipeline.py`, predictions CSV and `.gitignore` are unchanged.
+Directory `rdu_forecast/`, branch `codex/rdu-station-forecast`, based on upstream main `034b83a8e748c836a6ab4c7c79c0534156f11899`. The root README now provides a team entry point. Original `project1_pipeline.py`, predictions CSV and `.gitignore` are unchanged.
 
 The original pipeline still runs as before. After `cd rdu_forecast`, the new pipeline uses separate dependencies and outputs. Both forecast files have the same 336-hour `time_utc`/`time_local` grid. Model columns keep truthful names: HGB is not relabeled as random forest.
 

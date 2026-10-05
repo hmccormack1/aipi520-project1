@@ -1,6 +1,6 @@
 # Repository handoff
 
-The feature branch is `codex/rdu-station-forecast`. It adds only the `rdu_forecast/` directory. It leaves the four original tracked root files unchanged.
+The feature branch is `codex/rdu-station-forecast`. It adds `rdu_forecast/` and updates the root README to explain the current implementation. Original baseline code, predictions and root ignore rules are unchanged.
 
 The checked upstream base is `034b83a8e748c836a6ab4c7c79c0534156f11899` (`main`). The merge check applies to that fetched state, not arbitrary future edits. The new pipeline and the original pipeline run independently; their data sources and resulting scores are different.
 
@@ -25,26 +25,15 @@ The branch is committed locally; it has not been pushed automatically. From the 
 git push -u origin codex/rdu-station-forecast
 ```
 
-Then create a pull request from this branch into `main`. The directory addition does not replace the teammate's root README, source script or forecast CSV.
+Then create a pull request from this branch into `main`. Review the new directory and the root README update together.
 
-## Transfer without GitHub write access
-
-The separately supplied `rdu_forecast.bundle` contains the feature-branch history after the checked base. In another clone of the teammate repository that contains that base:
-
-```powershell
-git bundle verify PATH_TO_BUNDLE/rdu_forecast.bundle
-git fetch PATH_TO_BUNDLE/rdu_forecast.bundle codex/rdu-station-forecast:codex/rdu-station-forecast
-git switch main
-git merge codex/rdu-station-forecast
-```
-
-If working from the same machine, `git fetch` can use the local `teammate-review` repository path instead of the bundle path. Any uncommitted teammate work should be preserved before merging. Never force-push or reset their branch for this integration.
+The local repository folder is named `aipi520-project1`. Preserve uncommitted teammate work before merging. Never force-push or reset their branch for this integration.
 
 ## Data and outputs
 
 - Git includes English source, pinned dependencies, original reference results, figures and an audit verifier.
 - Git excludes virtual environments, large development data and runtime caches.
-- The portable ZIP additionally includes the exact downloaded data, fitted models and working frozen state. Install dependencies after extracting, then run `00_run_pipeline.py --final-eval` to verify/replot without training.
+- The existing local working directory includes downloaded data, fitted models and frozen state. Run `00_run_pipeline.py --final-eval` to verify/replot without training.
 - `reference_results/` remains original evidence. Do not copy it over runtime directories and then delete locks to tune against the final test.
 - Folder-scoped `.gitattributes` preserves exact bytes across operating systems, preventing CRLF conversion from breaking audited hashes.
 

@@ -1,33 +1,44 @@
-# AIPI 520 Project 1: Hourly Temperature Forecast for RDU
+# AIPI 520 Project 1 — RDU Temperature Forecast
 
-Predicts the hourly temperature at RDU airport for 12am Sept 17 - 11pm Sept 30, 2026 (336 hours).
+Predict 336 hourly temperatures from September 17–30, 2026, using information available before the forecast starts.
 
-## How to run
+## Start here
 
-1. Install the packages:
-   ```
-   pip install pandas numpy scikit-learn requests
-   ```
-2. Run the script from inside this folder:
-   ```
-   python project1_pipeline.py
-   ```
-3. The first run downloads historical hourly temperatures and saves them to `rdu_hourly.csv` (not tracked by git). Later runs reuse that file. Delete it to download fresh data.
+The current implementation is in **`rdu_forecast/`**.
 
-## What the script does
+1. Read [installation and results](rdu_forecast/README.md).
+2. Follow the [course-style code guide](rdu_forecast/CODE_GUIDE.md).
+3. Open the [recorded results and eight plots](rdu_forecast/reference_results/artifacts/results.html).
+4. Review [Git handoff instructions](rdu_forecast/INTEGRATION.md).
 
-1. Loads hourly temperature data (Open-Meteo archive, RDU coordinates, degrees F).
-2. Removes every row at or after the cutoff (12am Sept 17, 2026 local time = 04:00 UTC) and stops with an error if any remain.
-3. Builds features from the timestamp only (hour of day, day of year, long-term trend).
-4. Validates by time: trains on data before the final 14 days and tests on those 14 days. No random splits.
-5. Trains two models: linear regression and a random forest.
-6. Refits both on all data before the cutoff and writes predictions for every hour of Sept 17-30.
+```powershell
+cd rdu_forecast
+python tools/09_verify_delivery.py
+```
 
-## Files
+This checks the recorded experiment without installing ML libraries or training a model. Installation and full pipeline commands are in the implementation README.
 
-- `project1_pipeline.py`: the full pipeline
-- `predictions_sep17_sep30.csv`: hourly predictions from both models
+## Directory map
 
-## Avoiding future data
+| Path | Purpose |
+|---|---|
+| `rdu_forecast/step01_...` through `step08_...` | Download, clean, build features, compare models, freeze, evaluate and visualize |
+| `rdu_forecast/tests/` | Synthetic tests for leakage prevention |
+| `rdu_forecast/reference_results/` | Original forecasts, metrics, figures and audit evidence tracked in Git |
+| `rdu_forecast/data/`, `artifacts/`, `logs/`, `.venv/` | Local working data, results and environment; excluded from Git |
+| `project1_pipeline.py` | Original teammate baseline, retained unchanged for comparison |
+| `predictions_sep17_sep30.csv` | Original baseline predictions, retained unchanged |
 
-All data passes through a single `CUTOFF` value, and assertions check that no training or feature data comes from after it.
+The original root pipeline uses Open-Meteo. The current implementation uses documented IEM station observations. Run the current implementation to reproduce its reported scores; do not mix the two data definitions.
+
+## Test isolation and results
+
+The test was opened only after model selection and predictions were frozen. It was never used for training, preprocessing fits, feature selection or tuning.
+
+The preselected primary model achieved test RMSE **7.307°F**, MAE **6.097°F**, R² **0.492**. The predefined gradient-boosting comparator achieved RMSE **6.969°F**, MAE **5.298°F**, R² **0.538**. The primary model was not switched after seeing test results. All 336 test hours have observed labels. This is a retrospective experiment, not a forecast issued in September.
+
+## Team workflow
+
+Work on `codex/rdu-station-forecast` and review it against `main`. The original baseline code and CSV are unchanged; the root README now identifies the current implementation. Large data and virtual environments stay out of Git.
+
+Do not tune against the published test period or remove the freeze locks. A new modeling iteration needs a new untouched test period.
