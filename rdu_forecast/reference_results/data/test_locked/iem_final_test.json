@@ -1,0 +1,12 @@
+{
+  "purpose": "final_test",
+  "url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=RDU&data=tmpf&data=dwpf&data=mslp&data=sknt&data=drct&sts=2026-09-17T03%3A40%3A00%2B00%3A00&ets=2026-10-01T04%3A00%3A00%2B00%3A00&tz=UTC&format=onlycomma&missing=M&report_type=3&latlon=no&elev=no",
+  "requested_start": "2026-09-17 03:40:00+00:00",
+  "requested_end_exclusive": "2026-10-01 04:00:00+00:00",
+  "downloaded_at_utc": "2026-10-05T15:46:31.859982+00:00",
+  "rows": 337,
+  "observed_min": "2026-09-17 03:51:00+00:00",
+  "observed_max": "2026-10-01 03:51:00+00:00",
+  "sha256": "4a9b7cc2b6950c6a59a107146a0b7571539b6ed89568c5348d81718e57cef28f",
+  "note": "Retrospective routine METAR archive; original publication/revision timestamps unavailable."
+}

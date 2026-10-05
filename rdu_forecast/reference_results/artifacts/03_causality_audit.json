@@ -1,0 +1,10 @@
+{
+  "supervised_rows": 151960,
+  "origins": 453,
+  "max_target_time": "2026-09-14 03:00:00+00:00",
+  "feature_sources_precede_origin": true,
+  "annual_reference_uses_prior_years_only": true,
+  "scaling_or_imputation_fitted_here": false,
+  "final_test_read": false,
+  "development_data_sha256": "28067cd132cc6d3b126c48f54c133f65f5b436a26a2eb62e740a0e31b0fc8662"
+}

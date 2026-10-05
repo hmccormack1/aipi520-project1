@@ -1,0 +1,155 @@
+{
+  "champion": "anomaly_tau72",
+  "best_ols": "ols_harmonics",
+  "best_ridge": "ridge_a1000_trend0",
+  "best_nonlinear": "hgb_neighbors_l15",
+  "final_models": [
+    "baseline_climatology",
+    "baseline_yesterday",
+    "anomaly_tau72",
+    "ols_harmonics",
+    "ridge_a1000_trend0",
+    "hgb_neighbors_l15"
+  ],
+  "selected_at_utc": "2026-10-05T15:39:32.953415+00:00",
+  "experiment_signature": "b1d4431b92907a6024314a96963bb9bf34d83e84c25a828bbca84f95df5dfd69",
+  "rule": "Smallest complexity within 1% of minimum mean fold RMSE; then lower RMSE.",
+  "final_test_used": false,
+  "specs": [
+    {
+      "id": "baseline_climatology",
+      "kind": "climatology",
+      "complexity": 0
+    },
+    {
+      "id": "baseline_yesterday",
+      "kind": "persistence",
+      "complexity": 0
+    },
+    {
+      "id": "ols_basic",
+      "kind": "ols",
+      "enhanced": false,
+      "trend": false,
+      "complexity": 1
+    },
+    {
+      "id": "ols_harmonics",
+      "kind": "ols",
+      "enhanced": true,
+      "trend": false,
+      "complexity": 2
+    },
+    {
+      "id": "ridge_a10_trend0",
+      "kind": "ridge",
+      "enhanced": true,
+      "trend": false,
+      "alpha": 10,
+      "complexity": 2
+    },
+    {
+      "id": "ridge_a10_trend1",
+      "kind": "ridge",
+      "enhanced": true,
+      "trend": true,
+      "alpha": 10,
+      "complexity": 2
+    },
+    {
+      "id": "ridge_a1000_trend0",
+      "kind": "ridge",
+      "enhanced": true,
+      "trend": false,
+      "alpha": 1000,
+      "complexity": 2
+    },
+    {
+      "id": "ridge_a1000_trend1",
+      "kind": "ridge",
+      "enhanced": true,
+      "trend": true,
+      "alpha": 1000,
+      "complexity": 2
+    },
+    {
+      "id": "anomaly_tau24",
+      "kind": "anomaly",
+      "tau": 24,
+      "complexity": 3
+    },
+    {
+      "id": "anomaly_tau72",
+      "kind": "anomaly",
+      "tau": 72,
+      "complexity": 3
+    },
+    {
+      "id": "anomaly_tau168",
+      "kind": "anomaly",
+      "tau": 168,
+      "complexity": 3
+    },
+    {
+      "id": "direct_ridge",
+      "kind": "direct_ridge",
+      "group": "state",
+      "alpha": 1000,
+      "complexity": 4
+    },
+    {
+      "id": "hgb_state_l7",
+      "kind": "hgb",
+      "group": "state",
+      "leaves": 7,
+      "iterations": 180,
+      "complexity": 6
+    },
+    {
+      "id": "hgb_state_l15",
+      "kind": "hgb",
+      "group": "state",
+      "leaves": 15,
+      "iterations": 180,
+      "complexity": 6
+    },
+    {
+      "id": "hgb_weather_l7",
+      "kind": "hgb",
+      "group": "weather",
+      "leaves": 7,
+      "iterations": 180,
+      "complexity": 6
+    },
+    {
+      "id": "hgb_weather_l15",
+      "kind": "hgb",
+      "group": "weather",
+      "leaves": 15,
+      "iterations": 180,
+      "complexity": 6
+    },
+    {
+      "id": "hgb_neighbors_l7",
+      "kind": "hgb",
+      "group": "neighbors",
+      "leaves": 7,
+      "iterations": 180,
+      "complexity": 6
+    },
+    {
+      "id": "hgb_neighbors_l15",
+      "kind": "hgb",
+      "group": "neighbors",
+      "leaves": 15,
+      "iterations": 180,
+      "complexity": 6
+    },
+    {
+      "id": "rf_state",
+      "kind": "rf",
+      "group": "state",
+      "complexity": 7
+    }
+  ]
+}
