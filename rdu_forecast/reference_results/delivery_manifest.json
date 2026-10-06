@@ -1,0 +1,113 @@
+{
+  "packaged_at_utc": "2026-10-05T16:07:59.231275+00:00",
+  "base_commit": "034b83a8e748c836a6ab4c7c79c0534156f11899",
+  "changes": "Docstrings and exactly two exception messages translated; computational AST unchanged.",
+  "post_test_fit_calls": 0,
+  "post_test_model_selection_calls": 0,
+  "message_translations": {
+    "实验已冻结/测试已访问，禁止重新选择特征或模型。请查看已有结果；不能删除锁后继续调参。": "Experiment frozen or test accessed: feature/model selection is disabled. Review existing results; do not remove locks to tune again.",
+    "必须先冻结模型、预测和代码，才能读取测试数据。": "Freeze models, predictions and source code before accessing final test data."
+  },
+  "source_files": {
+    "00_run_pipeline.py": {
+      "original_sha256": "6aaf35f83db0a5797507ea787ae38666eaf42dfc7c9f5312bb4185524622d88c",
+      "english_sha256": "157647f1c0bbb48a70a5cff8db264e0849d736cc78170b86857ed1f1c06dfa90",
+      "computational_ast_sha256": "5187fbea3bae88d01f21abcc25d8611103570b00849d4d449dae22d33a6f4cfd"
+    },
+    "config.py": {
+      "original_sha256": "6cd7ef038990b8ddb9b2aa1897da1346b20a5251f01dd0cd4c86d6063a7ab62c",
+      "english_sha256": "5b9d8138a1af32140a6523bec9d37be62403361fd84b0791163f8c88731d85d3",
+      "computational_ast_sha256": "3289331c8e8b0a7818c05c67a9acb51137fa86eb9f6a66fb63b055385df800c9"
+    },
+    "integrity.py": {
+      "original_sha256": "d767951003b48aadf2d5579d8cc7755d3ef328692a61c03d1a6f77187c93b4e4",
+      "english_sha256": "b3eabb6ce61e14c7f54eb388c411079b64bf423baf5bcf754b3aee4141669a91",
+      "computational_ast_sha256": "a29d4d0726386a24888b4b104f25b276082b5219139a5d35d3b146db39069b0f"
+    },
+    "step01_download.py": {
+      "original_sha256": "fbda4492f12590f5ff016ae0a3c46a8aca0ccd503f767957db63e67a25d1d8e6",
+      "english_sha256": "65348bc5d80b8482a03a9a94916311d9263481e3baa7decf6d3d72c9fe35afde",
+      "computational_ast_sha256": "cf3d072f53131f7e464a0769b0c13bf9f1ac5b58d76c94b4165a2c16fda22659"
+    },
+    "step02_clean.py": {
+      "original_sha256": "9e8747f0f5e2f2dcd3a0eb2d10c0d02955484f311ee5b1f1abef613964046536",
+      "english_sha256": "3b5e0265d94b7d1370166b8d3b9f6f46ffc7094340c807b985641118bfdba461",
+      "computational_ast_sha256": "c7c3af05ce37fefbba527a725833d617802492652358f9dcd35c38ad29c20ed4"
+    },
+    "step03_features.py": {
+      "original_sha256": "b3e12bc8aa1607df9ab9cc7317cdd7ceb476dc9dcf634efd5d0513f0b71f0f39",
+      "english_sha256": "ad46f8b185458e19c9522677164aebd40ddd93fdf6fa7875e1ac2fc055cad10c",
+      "computational_ast_sha256": "d3445e5fd9045f5abc94c1ab4f7052bc6f9f79132f8eebeccb6f9e950a275c81"
+    },
+    "step04_models.py": {
+      "original_sha256": "d810e009ee87ccd76f038b5f874468b1df3e57b0d9bed414d93656070800a03e",
+      "english_sha256": "2b72b69b342873edd6edea448d02032cde77b9f397b7c37a8067627d54ee44cc",
+      "computational_ast_sha256": "e8216c2d3abbc49a6fee12b699d367361bb7c03ada27b43b12f5d2bf00eec770"
+    },
+    "step05_backtest_select.py": {
+      "original_sha256": "0ebe666ce753838ca657937a4212fce2f36314aae0bbcefc8c3e58390dcc0bee",
+      "english_sha256": "faf27099bcd89ca6a9f8c558aa3fb57b0594ecefcc96e6a46de1b85873921602",
+      "computational_ast_sha256": "cdb139ec28956d7133782ec7324ee45366b696ac8f639cded80f2a1c854cbf5b"
+    },
+    "step06_freeze_forecast.py": {
+      "original_sha256": "595922cf0eb50ab38fcf1601adb5161ed971e6d49f63e2520148853c8e4c245b",
+      "english_sha256": "d6547516acfe582573de984d27e540db0cf0e689afe4de80c85832513dae9f81",
+      "computational_ast_sha256": "6c15fdce594d78cbe67916d67cc98cb4928a8ce5f601b1c212b91a59bf457460"
+    },
+    "step07_final_evaluate.py": {
+      "original_sha256": "4be76540677cc86a80ea8fd26df777809a5c25bfde695cd5e074144f7fd69e57",
+      "english_sha256": "239f51afe321b5c49cd1aa360a4134b77c6cefd587f4d4ae9749708b0c4f100b",
+      "computational_ast_sha256": "543d2f85b3662b311b124b37c1e366f76bd82f8ed17ca31a618ca8a07214efb5"
+    },
+    "step08_visualize.py": {
+      "original_sha256": "b24d64ac3c4c7c5755659dd004c2371c5e540b2ef406437397d327417877c418",
+      "english_sha256": "5666f88bbd7ecbf3402c2774148978cc3fd93f9eaf62468f0e3f601e6908d8dd",
+      "computational_ast_sha256": "e93d03c409f87ea6728bd2d08d2b66486a950ba358b1fbdbdcadf6e653dd715a"
+    },
+    "requirements.txt": {
+      "original_sha256": "2240d1cd8bc996139b9c2b7fa57e362b1039bd51d588be81f3c5f418bf5176f2",
+      "english_sha256": "2240d1cd8bc996139b9c2b7fa57e362b1039bd51d588be81f3c5f418bf5176f2"
+    },
+    "tests/test_leakage.py": {
+      "original_sha256": "de7459eaa8acc055e7bfe1e600fd79074cf6763580da173c6270a13d8d39f8f9",
+      "english_sha256": "5d906552724456b21f8de949fd097b1b97feb96338a73ab742082916b4dc52d6",
+      "computational_ast_sha256": "131d16cbb18fc61dff8599ae1dd03ce73015b75b5f5dfc2c99e3a2541a184c4b"
+    }
+  },
+  "original_source_archive_sha256": "57fef7aa17026c7028ea733c608cd2c9594571a3823c5740c90e7487894ede17",
+  "reference_file_hashes": {
+    "artifacts/02_cleaning_audit.json": "43e3d7d852ee2fbcd3f85de8e1916f7819274b6d8a5a7d706d41aca85789bc93",
+    "artifacts/02_data_quality.csv": "228ff44e77b6179f7b49af89a91fb55b40de02de1598fc37d933f527d93d69ab",
+    "artifacts/03_causality_audit.json": "b10c6dfc91b16b4cb03cf23be111bab68e11a8bcaa8bf1d7edc5332ac795c274",
+    "artifacts/03_feature_dictionary.csv": "98fa2ff2f59f0c24f7266d4e00508716c402206acaf0c470ba73c4708713d853",
+    "artifacts/05_cv_metrics.csv": "5e6f69d8b0e480d20cbd8d53c50d7e56be869fd45b95e94409086a1d51ec7f5c",
+    "artifacts/05_cv_predictions.csv": "18a6765d337f68d87398643b7149d456359458db40b88eecf3ed229eab66ac89",
+    "artifacts/05_feature_group_selection.csv": "1e1f332595740f2b674aebf0ebe1d45843379b7bb226c47075034931f5804343",
+    "artifacts/05_fold_leakage_audit.csv": "08f820fd279c5c0c1884235a7ecbde9ad2725cc021d57120e8692f6ee18170ff",
+    "artifacts/05_model_selection.csv": "f5311141934cd5713070a67390d66316c2734da9f36d8009350f1668cddca2fc",
+    "artifacts/05_selection.json": "67962d980fa687f7a02dff6d5709ced017ebb863c24b97c08244f0d3113cf175",
+    "artifacts/06_frozen_predictions.csv": "07bd12e45ccee3e4b72653530b32742a75ec44257d00022f0f87e6b16efb8e90",
+    "artifacts/06_future_features.csv": "bda6dfc683455ac925bbe27c926203edd29f0724e7e3121641c616708f65425e",
+    "artifacts/06_linear_coefficients.csv": "13d551e1cfee6aac98246461d314bb3b5aca3d891a513e8a67edf1115a21a607",
+    "artifacts/06_models.joblib": "c4da4d853b1206ca4d06a871f3ce67a69f86fedd68567f35909e16f6f0ccffcf",
+    "artifacts/06_validation_error_quantiles.csv": "064c56e9985e4e680764da4ab3ddc4a8b90f783958167e2f972edbd1bf7e4c35",
+    "artifacts/07_final_metrics.csv": "d2ad612e4e4245b3449fd49a43dff2c14f58af8d15a1548ea44eb43274e7f128",
+    "artifacts/07_final_metrics_by_day.csv": "3774aab59cbef2146ac58dfdd3d4a21853419090e61c9d8ea938abfdcac48662",
+    "artifacts/07_final_predictions_and_actuals.csv": "65aa7b8e3400daed8bdcbdb49fdeeebedaa00656c5196775a76b0b9bd766b226",
+    "artifacts/07_test_access_audit.json": "39ee5a42b7dc969e3064968fac98f0bf4f0d3eef7092d48f4ad4be4102b27c0d",
+    "artifacts/freeze_manifest.json": "db7dc9d4517c0495986189dce5d9396197044cd1f486a6b72982f99e7429d973",
+    "artifacts/results.html": "ac30d45f5a179a4f614a6ba5bd358ba30dae84e35ffa2746bea461ff6af617c8",
+    "artifacts/figures/01_development_patterns.png": "a922f41c787b15671c7116b880c7cfe15937c1e2eff540210955cb60ab697d86",
+    "artifacts/figures/02_model_comparison.png": "8b6306fb386c01ad89376c35e3430b0a9ccc06b4e29414ae75a5243a5336a4da",
+    "artifacts/figures/03_cv_error_by_day.png": "f056912cb6dfef23c5f532743a153ef968ce28cfa128fd734b95b851c304930d",
+    "artifacts/figures/04_feature_ablation.png": "921b0b7ce87a13ed966a387970e61d62b82274b5135bc013c80201b871a8e4bd",
+    "artifacts/figures/05_data_coverage.png": "e037e070564ffb88c872d70ba2dfc87d7f41561aa7d331262842bfcd7f9829eb",
+    "artifacts/figures/06_final_forecast.png": "f9168c7ec14690bd4e436acfefb2fc24b479aa829849cb9df1ddfcf35b9ab01b",
+    "artifacts/figures/07_final_error_by_day.png": "ec68e73af104c61e72e34cecfdb92a022b3d117de493f97a806702808ab00780",
+    "artifacts/figures/08_model_decomposition.png": "fc28e72c0959d0f4ac9e5a4f975dff39d9bfb85afeff315ee22fb0d79eff0167",
+    "audit/original_frozen_source.zip": "57fef7aa17026c7028ea733c608cd2c9594571a3823c5740c90e7487894ede17",
+    "data/test_locked/access_started.json": "66b244dbfae5245d96260b14da5cf320840233da7ed3052501af8afd13651995",
+    "data/test_locked/iem_final_test.csv": "4a9b7cc2b6950c6a59a107146a0b7571539b6ed89568c5348d81718e57cef28f",
+    "data/test_locked/iem_final_test.json": "216a87e122237c36824803223c3566c5dbbe872998800f498176af87330c2fc0"
+  }
+}

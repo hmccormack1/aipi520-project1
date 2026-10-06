@@ -1,33 +1,75 @@
-# AIPI 520 Project 1: Hourly Temperature Forecast for RDU
+# AIPI 520 Project 1 - RDU Temperature Forecasting
 
-Predicts the hourly temperature at RDU airport for 12am Sept 17 - 11pm Sept 30, 2026 (336 hours).
+## Project Objective
 
-## How to run
+Forecast hourly temperature at RDU for a 336-hour horizon, from 2026-09-17 00:00 EDT through 2026-09-30 23:00 EDT. The forecast is issued once and uses only information available before the strict origin cutoff (2026-09-17 04:00 UTC); no observations arriving inside the forecast window are used as predictors.
 
-1. Install the packages:
-   ```
-   pip install pandas numpy scikit-learn requests
-   ```
-2. Run the script from inside this folder:
-   ```
-   python project1_pipeline.py
-   ```
-3. The first run downloads historical hourly temperatures and saves them to `rdu_hourly.csv` (not tracked by git). Later runs reuse that file. Delete it to download fresh data.
+## Modeling Workflow
 
-## What the script does
+```text
+Data -> Target Construction -> Feature Engineering -> Baselines
+     -> Linear Regression -> Interpretable Anomaly Model -> Nonlinear HGB
+     -> Temporal Validation -> Model Selection & Freeze
+     -> Final Untouched Test -> Conclusion
+```
 
-1. Loads hourly temperature data (Open-Meteo archive, RDU coordinates, degrees F).
-2. Removes every row at or after the cutoff (12am Sept 17, 2026 local time = 04:00 UTC) and stops with an error if any remain.
-3. Builds features from the timestamp only (hour of day, day of year, long-term trend).
-4. Validates by time: trains on data before the final 14 days and tests on those 14 days. No random splits.
-5. Trains two models: linear regression and a random forest.
-6. Refits both on all data before the cutoff and writes predictions for every hour of Sept 17-30.
+## Main Findings
 
-## Files
+- Seasonality is a strong baseline, and OLS adds almost no improvement beyond it.
+- Recent temperature anomaly provides a meaningful, simple, interpretable improvement.
+- HGB captures additional nonlinear structure.
+- The primary model was selected using historical validation only; the final test was not used to change model selection.
+- HGB achieved lower error on this specific final test period, but that result does not invalidate the validation-based selection process.
+- The conclusion is a performance-versus-interpretability/generalization tradeoff, not "the most complex model wins."
 
-- `project1_pipeline.py`: the full pipeline
-- `predictions_sep17_sep30.csv`: hourly predictions from both models
+## Start Here
 
-## Avoiding future data
+1. Project overview: [docs/PROJECT_FLOW_EN.pdf](docs/PROJECT_FLOW_EN.pdf)
+2. Code walkthrough: [rdu_forecast/CODE_GUIDE.md](rdu_forecast/CODE_GUIDE.md)
+3. Technical setup and reproduction: [rdu_forecast/README.md](rdu_forecast/README.md)
+4. Recorded figures and tables: [results.html](rdu_forecast/reference_results/artifacts/results.html)
+5. Verify without retraining:
 
-All data passes through a single `CUTOFF` value, and assertions check that no training or feature data comes from after it.
+```powershell
+cd rdu_forecast
+python tools/09_verify_delivery.py
+```
+
+## Key Results
+
+| Model | Validation RMSE (°F) | Test RMSE (°F) | Test MAE (°F) | Test R² | Test bias (°F) |
+|---|---:|---:|---:|---:|---:|
+| Seasonal baseline | - | 7.654 | 6.317 | 0.443 | -0.124 |
+| OLS harmonics | 5.863 | 7.653 | 6.398 | 0.443 | -0.695 |
+| `anomaly_tau72` | **5.768** | **7.307** | **6.097** | **0.492** | **-0.272** |
+| `hgb_neighbors_l15` | **5.879** | **6.969** | **5.298** | **0.538** | **+3.386** |
+
+`anomaly_tau72` had the minimum validation RMSE. HGB was approximately 1.9% worse on validation, placing it outside the predefined 1% near-tie region. The selected primary model therefore remains `anomaly_tau72`; HGB's lower final-test error is reported as an untouched-test result, not used for retrospective reselection.
+
+## Repository Map
+
+| Stage | Existing implementation |
+|---|---|
+| Data acquisition | `rdu_forecast/step01_download.py` |
+| Cleaning and target construction | `rdu_forecast/step02_clean.py` |
+| Feature engineering | `rdu_forecast/step03_features.py` |
+| Baselines and model definitions | `rdu_forecast/step04_models.py` |
+| Backtesting and model selection | `rdu_forecast/step05_backtest_select.py` |
+| Final development-only fit and freeze | `rdu_forecast/step06_freeze_forecast.py` |
+| Final untouched-test evaluation | `rdu_forecast/step07_final_evaluate.py` |
+| Visualization and results page | `rdu_forecast/step08_visualize.py` |
+
+## Verification
+
+### A. Verify the frozen submitted result without retraining
+
+```powershell
+cd rdu_forecast
+python tools/09_verify_delivery.py
+```
+
+This checks source equivalence, frozen artifacts, the freeze-before-test chain, test-access evidence, and recorded metrics using only the standard library.
+
+### B. Reproduce the full experiment from scratch, if desired
+
+Follow [rdu_forecast/README.md](rdu_forecast/README.md). A fresh reproduction downloads public data and runs the fixed pipeline, so it requires network access and the pinned dependencies. The published final period is no longer an unseen test for future model development.

@@ -1,0 +1,7 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {"name": "00 Development only (no final test)", "type": "debugpy", "request": "launch", "program": "${workspaceFolder}/00_run_pipeline.py", "console": "integratedTerminal", "cwd": "${workspaceFolder}"},
+    {"name": "00 Frozen final evaluation", "type": "debugpy", "request": "launch", "program": "${workspaceFolder}/00_run_pipeline.py", "args": ["--final-eval"], "console": "integratedTerminal", "cwd": "${workspaceFolder}"}
+  ]
+}

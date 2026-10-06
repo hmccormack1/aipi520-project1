@@ -1,0 +1,19 @@
+{
+  "evaluated_at_utc": "2026-10-05T15:46:33.136493+00:00",
+  "freeze_sha256": "db7dc9d4517c0495986189dce5d9396197044cd1f486a6b72982f99e7429d973",
+  "labels_available": 336,
+  "expected_labels": 336,
+  "test_coverage": 1.0,
+  "champion": "anomaly_tau72",
+  "empirical_80_band_test_coverage": 0.6458333333333334,
+  "fit_calls": 0,
+  "feature_selection_calls": 0,
+  "model_selection_calls": 0,
+  "result_hashes": {
+    "artifacts/07_final_predictions_and_actuals.csv": "65aa7b8e3400daed8bdcbdb49fdeeebedaa00656c5196775a76b0b9bd766b226",
+    "artifacts/07_final_metrics.csv": "d2ad612e4e4245b3449fd49a43dff2c14f58af8d15a1548ea44eb43274e7f128",
+    "artifacts/07_final_metrics_by_day.csv": "3774aab59cbef2146ac58dfdd3d4a21853419090e61c9d8ea938abfdcac48662",
+    "data/test_locked/iem_final_test.csv": "4a9b7cc2b6950c6a59a107146a0b7571539b6ed89568c5348d81718e57cef28f",
+    "data/test_locked/iem_final_test.json": "216a87e122237c36824803223c3566c5dbbe872998800f498176af87330c2fc0"
+  }
+}

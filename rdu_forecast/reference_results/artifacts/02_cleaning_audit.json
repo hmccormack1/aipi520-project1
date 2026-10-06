@@ -1,0 +1,10 @@
+{
+  "raw_rows": 307354,
+  "hourly_rows": 307323,
+  "last_label": "2026-09-17 03:00:00+00:00",
+  "last_observation": "2026-09-17 02:54:00+00:00",
+  "test_rows_read": 0,
+  "alignment": "Routine observation at minute >=45 mapped to next hour; latest report wins.",
+  "label_imputation": "NONE",
+  "recent_rdu_coverage": 1.0
+}
