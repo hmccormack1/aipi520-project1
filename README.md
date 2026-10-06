@@ -73,3 +73,7 @@ This checks source equivalence, frozen artifacts, the freeze-before-test chain, 
 ### B. Reproduce the full experiment from scratch, if desired
 
 Follow [rdu_forecast/README.md](rdu_forecast/README.md). A fresh reproduction downloads public data and runs the fixed pipeline, so it requires network access and the pinned dependencies. The published final period is no longer an unseen test for future model development.
+
+## Note on `project1_pipeline.py`
+
+`project1_pipeline.py` in the repository root is the earlier baseline (Open-Meteo data, calendar-only features, linear regression and random forest). It is kept for reference. The main project and all results reported above come from `rdu_forecast/`.
